@@ -1,0 +1,152 @@
+/**
+ * prism.js custom theme for JavaScript, CSS and HTML
+ * Based on https://github.com/juanmnl/vs-1984/blob/master/themes/1984-fancy-color-theme.json
+ * @author Anton Kuptsov
+ */
+:root {
+  --prizm-bg: #181a1f;
+  --prizm-text: #fcfcfc;
+  --prizm-keyword: #ff16b0;
+  --prizm-comment: #525863;
+  --prizm-func: #96a1ff;
+  --prizm-string: #df81fc;
+  --prizm-layout-bg: rgb(248, 231, 28);
+  --mac-circle1: rgb(255, 95, 86);
+  --mac-circle2: rgb(255, 189, 46);
+  --mac-circle3: rgb(39, 201, 63);
+}
+
+pre[class*='language-'] {
+  border-radius: 8px;
+  border: 1px solid var(--prizm-func);
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+  color: var(--prizm-text);
+  background: none;
+  text-shadow: none;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+pre[class*='language-']::-moz-selection,
+pre[class*='language-'] ::-moz-selection,
+code[class*='language-']::-moz-selection,
+code[class*='language-'] ::-moz-selection {
+  text-shadow: none;
+  background: var(--prizm-bg);
+}
+
+pre[class*='language-']::selection,
+pre[class*='language-'] ::selection,
+code[class*='language-']::selection,
+code[class*='language-'] ::selection {
+  text-shadow: none;
+  background: var(--prizm-bg);
+}
+
+@media print {
+  code[class*='language-'],
+  pre[class*='language-'] {
+    text-shadow: none;
+  }
+}
+
+/* Code blocks */
+pre[class*='language-'] {
+  padding: 1em;
+  margin: 0;
+  overflow: auto;
+}
+
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  background: var(--prizm-bg);
+}
+
+/* Inline code */
+:not(pre) > code[class*='language-'] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: var(--prizm-comment);
+}
+
+.token.punctuation {
+  color: var(--prizm-text);
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: var(--prizm-keyword);
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: var(--prizm-string);
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: var(--prizm-string);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: var(--prizm-keyword);
+}
+
+.token.function {
+  color: var(--prizm-func);
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: var(--prizm-func);
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
