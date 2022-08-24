@@ -11,6 +11,7 @@ import {
   Text,
   VStack,
   chakra,
+  Flex,
 } from '@chakra-ui/react';
 import { formatDate } from '../utils';
 import { TextBlock } from './TextBlock';
@@ -31,7 +32,7 @@ export const PostsList = ({ posts }) => {
           previewImage.files[0]?.file?.url ||
           previewImage.files[0]?.external?.url;
 
-        const [{ plain_text: postSnippet }] = Snippet[Snippet.type];
+        const postSnippet = Snippet[Snippet.type][0]?.plain_text || '';
 
         const [{ plain_text: postTitle }] = Name.title;
         const slug = postTitle.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '-');
@@ -43,8 +44,11 @@ export const PostsList = ({ posts }) => {
               borderWidth="1px"
               borderRadius="lg"
               overflow="hidden"
+              sx={{
+                _hover: { img: { opacity: 1 } },
+              }}
             >
-              <HStack pos={'relative'} h={['auto', 130]}>
+              <HStack pos={'relative'} h={['auto', 160]}>
                 <Image
                   src={postImage}
                   alt={postTitle}
@@ -53,13 +57,16 @@ export const PostsList = ({ posts }) => {
                   maxW={200}
                   h="100%"
                   objectFit="cover"
-                  htmlHeight="130px"
-                  htmlWidth="130px"
+                  htmlHeight="160px"
+                  htmlWidth="160px"
                   display={['none', 'block']}
+                  opacity={0.7}
+                  transition="all 0.25s ease-in-out"
                 />
-                <VStack
+                <Flex
                   alignItems="flex-start"
                   justifyContent="space-between"
+                  direction="column"
                   px="3"
                   py="1"
                   h="100%"
@@ -71,28 +78,29 @@ export const PostsList = ({ posts }) => {
                         component={Heading}
                         as="h3"
                         size="md"
-                        mt="2"
+                        // mt="2"
                         text={Name.title}
                       />
                     </LinkOverlay>
-                    <Text color="gray.500" isTruncated mb={1}>
+                    <Text color="gray.500" isTruncated mt={0}>
                       {postSnippet}
                     </Text>
-                    <chakra.p
-                      display="flex"
-                      sx={{ gap: '4px', flexWrap: 'wrap' }}
-                    >
-                      {Tags[Tags.type].map(({ name }, i) => (
-                        <Tag key={i} colorScheme="purple" ml={i !== 0 && 2}>
-                          {name}
-                        </Tag>
-                      ))}
-                    </chakra.p>
                   </Box>
-                  <Text as="p" opacity={0.65} fontSize="xs">
+                  <chakra.p
+                    display="flex"
+                    sx={{ gap: '4px', flexWrap: 'wrap' }}
+                  >
+                    {Tags[Tags.type].map(({ name }, i) => (
+                      <Tag key={i} colorScheme="purple">
+                        {name}
+                      </Tag>
+                    ))}
+                  </chakra.p>
+
+                  {/* <Text as="p" opacity={0.65} fontSize="xs">
                     {formatDate(postDate.date?.start || post.created_time)}
-                  </Text>
-                </VStack>
+                  </Text> */}
+                </Flex>
               </HStack>
             </LinkBox>
           </ListItem>
