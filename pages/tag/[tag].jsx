@@ -68,6 +68,6 @@ export const getStaticProps = async ({ params: { tag } }) => {
       posts: database,
       tag,
     },
-    revalidate: 60,
+    revalidate: 120,
   };
 };

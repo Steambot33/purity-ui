@@ -112,7 +112,7 @@ export const getStaticProps = async () => {
 
   return {
     props: { bookmarks, tags },
-    revalidate: 60 * 60,
+    revalidate: 3600,
   };
 };
 
